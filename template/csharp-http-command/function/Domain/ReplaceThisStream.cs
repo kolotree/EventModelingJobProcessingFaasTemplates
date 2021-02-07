@@ -1,5 +1,5 @@
-﻿using Abstractions;
-using Infrastructure.Serialization;
+﻿using JobProcessing.Abstractions;
+using JobProcessing.Infrastructure.Serialization;
 
 namespace Function.Domain
 {

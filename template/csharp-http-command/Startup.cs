@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Function;
 using System;
-using Abstractions;
-using Infrastructure.EventStore;
+using JobProcessing.Abstractions;
+using JobProcessing.Infrastructure.EventStore;
 using Microsoft.AspNetCore.Http;
 
 public class Startup

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Threading.Tasks;
-using Abstractions;
+using JobProcessing.Abstractions;
 using Function.Domain;
-using Infrastructure.EventStore;
+using JobProcessing.Infrastructure.EventStore;
 using Newtonsoft.Json;
 
 namespace Function

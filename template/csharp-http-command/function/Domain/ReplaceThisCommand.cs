@@ -1,4 +1,4 @@
-using Abstractions;
+using JobProcessing.Abstractions;
 
 namespace Function.Domain
 {
