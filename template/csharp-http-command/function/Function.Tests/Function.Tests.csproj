@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\template\csharp-http-command\function\Function.csproj" />
+      <ProjectReference Include="..\Function\Function.csproj" />
     </ItemGroup>
 
 </Project>

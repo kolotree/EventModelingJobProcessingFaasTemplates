@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Function", "template\csharp-http-command\function\Function.csproj", "{7A443F1C-78ED-416E-9625-0CAD4B63D7CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Function", "template\csharp-http-command\function\Function\Function.csproj", "{7A443F1C-78ED-416E-9625-0CAD4B63D7CA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "root", "template\csharp-http-command\root.csproj", "{132C9C0D-0AF1-4D73-91B0-5C072B1B553E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.Tests", "Function.Tests\Function.Tests.csproj", "{E55AC1D9-8BED-499C-A48E-35194445CA76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.Tests", "template\csharp-http-command\function\Function.Tests\Function.Tests.csproj", "{E55AC1D9-8BED-499C-A48E-35194445CA76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

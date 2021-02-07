@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="function\Function.csproj" />
+    <ProjectReference Include="function\Function\Function.csproj" />
   </ItemGroup>
 
   <ItemGroup>
