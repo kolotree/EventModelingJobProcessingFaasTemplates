@@ -19,7 +19,7 @@ namespace Function
             Error = error;
         }
         
-        public static FunctionResult Success = new(true, string.Empty, string.Empty);
+        public static readonly FunctionResult Success = new(true, string.Empty, string.Empty);
 
         public static FunctionResult SuccessWith(string value) => new(true, value, string.Empty);
 
@@ -30,6 +30,11 @@ namespace Function
             yield return IsSuccess;
             yield return Value;
             yield return Error;
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(IsSuccess)}: {IsSuccess}, {nameof(Value)}: {Value}, {nameof(Error)}: {Error}";
         }
     }
 }
