@@ -3,7 +3,7 @@ using JobProcessing.Abstractions;
 
 namespace Function.Domain
 {
-    internal sealed class ReplaceThisEvent : ValueObject, IEvent
+    public sealed class ReplaceThisEvent : ValueObject, IEvent
     {
         public string Id { get; }
 

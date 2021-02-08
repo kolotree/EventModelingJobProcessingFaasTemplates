@@ -42,10 +42,9 @@ public class Startup
 
             try
             {
-                var (status, text) = await new FunctionHandler(Store).Handle(context.Request);
-                context.Response.StatusCode = status;
-                if (!string.IsNullOrEmpty(text))
-                    await context.Response.WriteAsync(text);
+                var functionResult = await new FunctionHandler(Store).Handle(context.Request);
+                context.Response.StatusCode = functionResult.StatusCode();
+                await context.Response.WriteAsync(functionResult.ResponseJson());
             }
             catch (NotImplementedException nie)
             {
