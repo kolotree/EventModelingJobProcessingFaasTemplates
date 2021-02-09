@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using JobProcessing.Abstractions;
@@ -16,17 +17,21 @@ namespace Function
         
         public async Task<FunctionResult> Handle(HttpRequest request)
         {
-            var command = await request.Read<ReplaceThisCommand>();
-            var commandHandler = new CommandHandler(_store);
-
             try
             {
+                var command = await request.Read<ReplaceThisCommand>();
+                var commandHandler = new CommandHandler(_store);
                 await commandHandler.Handle(command);
                 return FunctionResult.Success;
             }
-            catch (VersionMismatchException)
+            catch (Exception ex)
             {
-                return FunctionResult.BadRequestFailureWith("Item with the same ID already in store");
+                switch (ex)
+                {
+                    case VersionMismatchException: return FunctionResult.BadRequestFailureWith("Item with the same ID already in store");
+                    case ArgumentException e: return FunctionResult.BadRequestFailureWith($"Invalid input: {e.Message}");
+                    default: throw;
+                }
             }
         }
     }

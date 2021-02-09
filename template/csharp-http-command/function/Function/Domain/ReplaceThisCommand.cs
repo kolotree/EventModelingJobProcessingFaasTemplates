@@ -1,3 +1,4 @@
+using System;
 using JobProcessing.Abstractions;
 
 namespace Function.Domain
@@ -6,9 +7,9 @@ namespace Function.Domain
     {
         public string Id { get; }
 
-        public ReplaceThisCommand(string id)
+        public ReplaceThisCommand(string? id)
         {
-            Id = id;
+            Id = id ?? throw new ArgumentException(nameof(id));
         }
         
         public StreamId StreamId => StreamId.AssembleFor<ReplaceThisStream>(Id);
