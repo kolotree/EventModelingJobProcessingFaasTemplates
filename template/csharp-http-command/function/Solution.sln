@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function", "..\Function\Function.csproj", "{975D48A7-9D27-4BBD-9D04-AE0B8D7F1D1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function", "Function\Function.csproj", "{975D48A7-9D27-4BBD-9D04-AE0B8D7F1D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.Tests", "..\Function.Tests\Function.Tests.csproj", "{8B33998C-B6E5-4EA2-9A63-2BAF06BB022A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.Tests", "Function.Tests\Function.Tests.csproj", "{8B33998C-B6E5-4EA2-9A63-2BAF06BB022A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
