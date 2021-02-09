@@ -5,16 +5,16 @@ namespace Function
 {
     public sealed class FunctionResult : ValueObject
     {
-        public int HttpCode { get; }
+        public int StatusCode { get; }
         public string? Value { get; }
         public string? Error { get; }
         
         public bool IsSuccess => Value != null;
         public bool IsFailure => !IsSuccess;
 
-        private FunctionResult(int httpCode, string? value, string? error)
+        private FunctionResult(int statusCode, string? value, string? error)
         {
-            HttpCode = httpCode;
+            StatusCode = statusCode;
             Value = value;
             Error = error;
         }
@@ -33,7 +33,7 @@ namespace Function
 
         public override string ToString() =>
             IsSuccess
-                ? $"{nameof(HttpCode)}: {HttpCode}, {nameof(Value)}: {Value}"
-                : $"{nameof(HttpCode)}: {HttpCode}, {nameof(Error)}: {Error}";
+                ? $"{nameof(StatusCode)}: {StatusCode}, {nameof(Value)}: {Value}"
+                : $"{nameof(StatusCode)}: {StatusCode}, {nameof(Error)}: {Error}";
     }
 }

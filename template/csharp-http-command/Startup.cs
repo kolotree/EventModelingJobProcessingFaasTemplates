@@ -6,6 +6,7 @@ using System;
 using JobProcessing.Abstractions;
 using JobProcessing.Infrastructure.EventStore;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 public class Startup
 {
@@ -24,7 +25,7 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.Run(async (context) =>
+        app.Run(async context =>
         {
             if (context.Request.Path != "/")
             {
@@ -43,19 +44,26 @@ public class Startup
             try
             {
                 var functionResult = await new FunctionHandler(Store).Handle(context.Request);
-                context.Response.StatusCode = functionResult.StatusCode();
+                context.Response.StatusCode = functionResult.StatusCode;
+                context.Response.ContentType = "application/json";
                 await context.Response.WriteAsync(functionResult.ResponseJson());
             }
             catch (NotImplementedException nie)
             {
                 context.Response.StatusCode = 501;
-                await context.Response.WriteAsync(nie.ToString());
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(new { nie.Message }));
             }
             catch (Exception ex)
             {
                 context.Response.StatusCode = 500;
-                Console.WriteLine(ex.Message);
-                await context.Response.WriteAsync(ex.ToString());
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(
+                    JsonConvert.SerializeObject(new {
+                        ex.Message,
+                        ex.StackTrace,
+                        InnerException = ex.InnerException != null ? new { ex.InnerException.Message, ex.InnerException.StackTrace } : null
+                }));
             }
         });
     }
