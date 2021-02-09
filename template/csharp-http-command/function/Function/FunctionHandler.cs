@@ -29,7 +29,7 @@ namespace Function
                 switch (ex)
                 {
                     case VersionMismatchException: return FunctionResult.BadRequestFailureWith("Item with the same ID already in store");
-                    case ArgumentException e: return FunctionResult.BadRequestFailureWith($"Invalid input: {e.Message}");
+                    case ArgumentException e: return FunctionResult.BadRequestFailureWith($"Invalid input: {e.ParamName}");
                     default: throw;
                 }
             }
