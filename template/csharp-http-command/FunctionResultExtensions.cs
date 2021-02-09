@@ -1,5 +1,4 @@
 using Function;
-using Newtonsoft.Json;
 
 internal static class FunctionResultExtensions
 {
@@ -8,6 +7,6 @@ internal static class FunctionResultExtensions
 
     public static string ResponseJson(this FunctionResult functionResult) =>
         functionResult.IsSuccess
-            ? JsonConvert.SerializeObject(new {value = functionResult.Value})
-            : JsonConvert.SerializeObject(new {error = functionResult.Error});
+            ? functionResult.Value!
+            : functionResult.Error!;
 }

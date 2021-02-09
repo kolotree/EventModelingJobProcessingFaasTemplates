@@ -26,7 +26,7 @@ namespace Function
             }
             catch (VersionMismatchException)
             {
-                return FunctionResult.FailureWith("Item with the same ID already in store");
+                return FunctionResult.BadRequestFailureWith("Item with the same ID already in store");
             }
         }
     }

@@ -5,36 +5,35 @@ namespace Function
 {
     public sealed class FunctionResult : ValueObject
     {
-        public bool IsSuccess { get; }
-        public string Value { get; }
-        public string Error { get; }
+        public int HttpCode { get; }
+        public string? Value { get; }
+        public string? Error { get; }
+        
+        public bool IsSuccess => Value != null;
+        public bool IsFailure => !IsSuccess;
 
-        private FunctionResult(
-            bool isSuccess,
-            string value,
-            string error)
+        private FunctionResult(int httpCode, string? value, string? error)
         {
-            IsSuccess = isSuccess;
+            HttpCode = httpCode;
             Value = value;
             Error = error;
         }
         
-        public static readonly FunctionResult Success = new(true, string.Empty, string.Empty);
+        public static readonly FunctionResult Success = new(200, string.Empty, null);
 
-        public static FunctionResult SuccessWith(string value) => new(true, value, string.Empty);
+        public static FunctionResult SuccessWith(string value) => new(200, value, null);
 
-        public static FunctionResult FailureWith(string error) => new(false, string.Empty, error);
+        public static FunctionResult BadRequestFailureWith(string error) => new(400, null, error);
         
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return IsSuccess;
-            yield return Value;
-            yield return Error;
+            yield return Value ?? "";
+            yield return Error ?? "";
         }
 
-        public override string ToString()
-        {
-            return $"{nameof(IsSuccess)}: {IsSuccess}, {nameof(Value)}: {Value}, {nameof(Error)}: {Error}";
-        }
+        public override string ToString() =>
+            IsSuccess
+                ? $"{nameof(HttpCode)}: {HttpCode}, {nameof(Value)}: {Value}"
+                : $"{nameof(HttpCode)}: {HttpCode}, {nameof(Error)}: {Error}";
     }
 }

@@ -54,6 +54,7 @@ public class Startup
             catch (Exception ex)
             {
                 context.Response.StatusCode = 500;
+                Console.WriteLine(ex.Message);
                 await context.Response.WriteAsync(ex.ToString());
             }
         });

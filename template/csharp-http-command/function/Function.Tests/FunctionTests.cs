@@ -30,6 +30,7 @@ namespace Function.Tests
 
             functionResult.IsSuccess.Should().BeFalse();
             functionResult.Error.Should().Be("Item with the same ID already in store");
+            _store.ProducedEventEnvelopes.Should().BeEmpty();
         }
         
         [Fact]
@@ -44,6 +45,7 @@ namespace Function.Tests
                 }.ToHttpRequest());
 
             functionResult.IsSuccess.Should().BeTrue();
+            _store.ProducedEventEnvelopes.Should().Contain(new ReplaceThisEvent("Id2").ToEventEnvelope());
         }
     }
 }
