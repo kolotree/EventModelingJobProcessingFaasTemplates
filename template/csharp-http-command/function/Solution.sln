@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function", "Function\Functi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.Tests", "Function.Tests\Function.Tests.csproj", "{8B33998C-B6E5-4EA2-9A63-2BAF06BB022A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.WebApp", "Function.WebApp\Function.WebApp.csproj", "{58274AC4-C0BA-45A9-A375-E5ED9F1DA3F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{8B33998C-B6E5-4EA2-9A63-2BAF06BB022A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B33998C-B6E5-4EA2-9A63-2BAF06BB022A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B33998C-B6E5-4EA2-9A63-2BAF06BB022A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58274AC4-C0BA-45A9-A375-E5ED9F1DA3F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58274AC4-C0BA-45A9-A375-E5ED9F1DA3F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58274AC4-C0BA-45A9-A375-E5ED9F1DA3F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58274AC4-C0BA-45A9-A375-E5ED9F1DA3F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
