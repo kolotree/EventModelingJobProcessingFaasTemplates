@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.Tests", "template\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.WebApp", "template\csharp-http-command\function\Function.WebApp\Function.WebApp.csproj", "{65B56684-EDE7-4E8A-8913-F16B95FD71B0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "function", "function", "{3529BFEB-74DA-4A77-95C5-8A349F90148F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +41,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D19A35C8-5F1E-4B8E-B82C-C6A548B5E62C}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7A443F1C-78ED-416E-9625-0CAD4B63D7CA} = {3529BFEB-74DA-4A77-95C5-8A349F90148F}
+		{E55AC1D9-8BED-499C-A48E-35194445CA76} = {3529BFEB-74DA-4A77-95C5-8A349F90148F}
+		{65B56684-EDE7-4E8A-8913-F16B95FD71B0} = {3529BFEB-74DA-4A77-95C5-8A349F90148F}
 	EndGlobalSection
 EndGlobal
