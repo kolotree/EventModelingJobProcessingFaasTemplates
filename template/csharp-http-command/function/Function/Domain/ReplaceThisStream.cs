@@ -8,7 +8,7 @@ namespace Function.Domain
         public static ReplaceThisStream NewFrom(ReplaceThisCommand c)
         {
             var stream = new ReplaceThisStream();
-            stream.ApplyChange(c.ToReplaceThisEvent().ToEventEnvelope());
+            stream.ApplyChange(c.ToReplaceThisEvent().ToEventEnvelopeUsing(c.Metadata));
             return stream;
         }
 

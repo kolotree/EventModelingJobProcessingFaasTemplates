@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using Function.Domain;
+using Grpc.Core;
+using JobProcessing.Abstractions;
 using JobProcessing.Infrastructure.Serialization;
 using JobProcessing.InMemoryStore;
 using Xunit;
@@ -20,11 +22,12 @@ namespace Function.Tests
         [Fact]
         public async Task failure_returned_if_stream_with_same_id_exists()
         {
-            _store.Given("ReplaceThisStream-Id1", new ReplaceThisEvent("Id1").ToEventEnvelope());
+            _store.Given("ReplaceThisStream-Id1", new ReplaceThisEvent("Id1").ToEventEnvelopeUsing(CommandMetadata.GenerateNew()));
             
             var functionResult = await  _functionHandler.Handle(
                 new
                 {
+                    Metadata = CommandMetadata.GenerateNew(),
                     Id = "Id1"
                 }.ToHttpRequest());
 
@@ -36,16 +39,18 @@ namespace Function.Tests
         [Fact]
         public async Task success_returned_if_stream_with_same_id_doesnt_exist()
         {
-            _store.Given("ReplaceThisStream-Id1", new ReplaceThisEvent("Id1").ToEventEnvelope());
-            
+            _store.Given("ReplaceThisStream-Id1", new ReplaceThisEvent("Id1").ToEventEnvelopeUsing(CommandMetadata.GenerateNew()));
+
+            var commandMetadata = CommandMetadata.GenerateNew();
             var functionResult = await  _functionHandler.Handle(
                 new
                 {
+                    Metadata = commandMetadata,
                     Id = "Id2"
                 }.ToHttpRequest());
 
             functionResult.IsSuccess.Should().BeTrue();
-            _store.ProducedEventEnvelopes.Should().Contain(new ReplaceThisEvent("Id2").ToEventEnvelope());
+            _store.ProducedEventEnvelopes.Should().Contain(new ReplaceThisEvent("Id2").ToEventEnvelopeUsing(commandMetadata));
         }
     }
 }

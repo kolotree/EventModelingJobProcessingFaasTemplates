@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Function;
 using System;
+using EventStore.Client;
 using JobProcessing.Abstractions;
 using JobProcessing.Infrastructure.EventStore;
 using Microsoft.AspNetCore.Http;
@@ -18,8 +19,11 @@ public class Startup
     {
         _store = EventStoreBuilder
             .NewUsing(
-                Environment.GetEnvironmentVariable("EventStore_ConnectionString") 
-                ?? throw new ArgumentException("EventStore connection string is not provided through environment variable 'EventStore_ConnectionString'."))
+                new EventStoreConfiguration(
+                    Environment.GetEnvironmentVariable("EventStore_ConnectionString")!,
+                    new UserCredentials(
+                        Environment.GetEnvironmentVariable("EventStore_UserName")!,
+                        Environment.GetEnvironmentVariable("EventStore_Password")!)))
             .NewStore();
     }
 
